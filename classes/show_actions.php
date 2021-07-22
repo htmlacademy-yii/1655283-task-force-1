@@ -29,12 +29,13 @@ class show_actions {
         if($action == ACTION_REFUSAL) {  return STATUS_FAILED; }
     }
  }
- public function getActions($current_status) {
+ public function getActions($current_status, $clicus = 'customer') {
+    if($clicus == 'customer') {
     if($current_status == STATUS_NEW) {
-        return array(STATUS_CANCELED,STATUS_PROCESS);
+        return array(STATUS_CANCELED);
      }
      if($current_status == STATUS_PROCESS) {
-        return array(STATUS_COMPLETED,STATUS_FAILED);
+        return array(STATUS_COMPLETED);
      }
      if($current_status == STATUS_CANCELED) {
         return false;
@@ -45,12 +46,25 @@ class show_actions {
      if($current_status == STATUS_FAILED) {
         return false;
      }
+    }
+    if($clicus == 'client') {
+    if($current_status == STATUS_NEW) {
+        return array(STATUS_PROCESS);
+     }
+     if($current_status == STATUS_PROCESS) {
+        return array(STATUS_FAILED); // STATUS_COMPLETE ???
+     }
+     if($current_status == STATUS_CANCELED) {
+        return false;
+     }
+     if($current_status == STATUS_COMPLETED) {
+        return false;
+     }
+     if($current_status == STATUS_FAILED) {
+        return false;
+     }
+    }
  }
-
-
-
-
-
 
 
 
