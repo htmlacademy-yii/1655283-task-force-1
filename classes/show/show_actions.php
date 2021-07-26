@@ -52,9 +52,8 @@ class show_actions {
     }
  }
 
- public function getActions($current_status, $clicus = 'customer'):?string
+ public function getActionsCustomer($current_status):?string
  {
-    if($clicus === 'customer') {
     if($current_status === self::STATUS_NEW) {
          return self::STATUS_CANCELED;
      }
@@ -70,8 +69,11 @@ class show_actions {
      if($current_status === self::STATUS_FAILED) {
         return null;
      }
-    }
-    if($clicus == 'client') {
+
+}
+
+public function getActionsClient($current_status):?string
+{
     if($current_status === self::STATUS_NEW) {
          return self::STATUS_PROCESS;
      }
@@ -87,9 +89,8 @@ class show_actions {
      if($current_status === self::STATUS_FAILED) {
         return null;
      }
-    }
- }
 
+ }
 
 
 }
