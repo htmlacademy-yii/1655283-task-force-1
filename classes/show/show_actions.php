@@ -22,7 +22,7 @@ class show_actions {
      $this->clientId = $clientId;
  }
 
-  public function getStatus($status = 'all'):string
+  public function getStatus(string $status = 'all'):?string
   {
     $array[self::STATUS_NEW] = "Новая заявка";
     $array[self::STATUS_PROCESS] = "В процессе";
@@ -31,7 +31,7 @@ class show_actions {
     $array[self::STATUS_FAILED] = "Провалена";
     return $array[$status];
  }
- public function getAction($action = 'all'):string
+ public function getAction(string $action = 'all'):string
  {
     $array[self::ACTION_CANC] = "Отменить заявку";
     $array[self::ACTION_FINISH] = "Завершить заявку";
@@ -40,7 +40,7 @@ class show_actions {
     return $array[$action];
  }
 
- public function getNextStatus($current_status, $action):string
+ public function getNextStatus(string $current_status, string $action):string
  {
     if($current_status === self::STATUS_NEW) {
         if($action === self::ACTION_CANC) {     return self::STATUS_CANCELED; }
@@ -52,7 +52,7 @@ class show_actions {
     }
  }
 
- public function getActionsCustomer($current_status):?string
+ public function getActionsCustomer(string $current_status):?string
  {
     if($current_status === self::STATUS_NEW) {
          return self::STATUS_CANCELED;
@@ -72,7 +72,7 @@ class show_actions {
 
 }
 
-public function getActionsClient($current_status):?string
+public function getActionsClient(string $current_status):?string
 {
     if($current_status === self::STATUS_NEW) {
          return self::STATUS_PROCESS;
