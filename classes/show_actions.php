@@ -1,5 +1,7 @@
 <?php
 class show_actions {
+ protected int $custometId;
+ protected int $clientId;
 
  const STATUS_NEW = 'new';
  const STATUS_PROCESS = 'process';
@@ -12,10 +14,9 @@ class show_actions {
  const ACTION_RESPONSE = 'response';
  const ACTION_REFUSAL = 'refusal';
 
- public function __construct() {
-    $current_status = self::STATUS_NEW;
-    $customerId = 0;
-    $clientId = 0;
+ public function __construct(int $customerId, int $clientId) {
+    $this->customerId = $customerId;
+    $this->clientId = $clientId;
  }
 
   public function getStatus($status = 'all'){
