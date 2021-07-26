@@ -1,5 +1,6 @@
 <?php
-require_once "classes/show_actions.php";
+set_include_path('classes');
+spl_autoload_register();
 
 $object = new show_actions();
 

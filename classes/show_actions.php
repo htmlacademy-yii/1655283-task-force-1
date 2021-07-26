@@ -24,59 +24,59 @@ class show_actions {
     $array[self::STATUS_CANCELED] = "Отменена";
     $array[self::STATUS_COMPLETED] = "Выполнена";
     $array[self::STATUS_FAILED] = "Провалена";
-    if($status == 'all') { return $array; } else { return $array[$status]; }
+    return $status === 'all' ? $array : $array[$status];
  }
  public function getAction($action = 'all'){
     $array[self::ACTION_CANC] = "Отменить заявку";
     $array[self::ACTION_FINISH] = "Завершить заявку";
     $array[self::ACTION_RESPONSE] = "Откликнуться";
     $array[self::ACTION_REFUSAL] = "Отказаться";
-    if($action == 'all') { return $array; } else { return $array[$action]; }
+    return $action === 'all' ? $array : $array[$action];
  }
 
  public function getNextStatus($current_status, $action) {
-    if($current_status == self::STATUS_NEW) {
-        if($action == self::ACTION_CANC) {     return self::STATUS_CANCELED; }
-        if($action == self::ACTION_RESPONSE) { return self::STATUS_PROCESS; }
+    if($current_status === self::STATUS_NEW) {
+        if($action === self::ACTION_CANC) {     return self::STATUS_CANCELED; }
+        if($action === self::ACTION_RESPONSE) { return self::STATUS_PROCESS; }
     }
-    if($current_status == self::STATUS_PROCESS) {
-        if($action == self::ACTION_FINISH) {   return self::STATUS_COMPLETED; }
-        if($action == self::ACTION_REFUSAL) {  return self::STATUS_FAILED; }
+    if($current_status === self::STATUS_PROCESS) {
+        if($action === self::ACTION_FINISH) {   return self::STATUS_COMPLETED; }
+        if($action === self::ACTION_REFUSAL) {  return self::STATUS_FAILED; }
     }
  }
 
  public function getActions($current_status, $clicus = 'customer') {
-    if($clicus == 'customer') {
-    if($current_status == self::STATUS_NEW) {
+    if($clicus === 'customer') {
+    if($current_status === self::STATUS_NEW) {
         return array(self::STATUS_CANCELED);
      }
-     if($current_status == self::STATUS_PROCESS) {
+     if($current_status === self::STATUS_PROCESS) {
         return array(self::STATUS_COMPLETED);
      }
-     if($current_status == self::STATUS_CANCELED) {
+     if($current_status === self::STATUS_CANCELED) {
         return false;
      }
-     if($current_status == self::STATUS_COMPLETED) {
+     if($current_status === self::STATUS_COMPLETED) {
         return false;
      }
-     if($current_status == self::STATUS_FAILED) {
+     if($current_status === self::STATUS_FAILED) {
         return false;
      }
     }
     if($clicus == 'client') {
-    if($current_status == self::STATUS_NEW) {
+    if($current_status === self::STATUS_NEW) {
         return array(self::STATUS_PROCESS);
      }
-     if($current_status == self::STATUS_PROCESS) {
+     if($current_status === self::STATUS_PROCESS) {
         return array(self::STATUS_FAILED);
      }
-     if($current_status == self::STATUS_CANCELED) {
+     if($current_status === self::STATUS_CANCELED) {
         return false;
      }
-     if($current_status == self::STATUS_COMPLETED) {
+     if($current_status === self::STATUS_COMPLETED) {
         return false;
      }
-     if($current_status == self::STATUS_FAILED) {
+     if($current_status === self::STATUS_FAILED) {
         return false;
      }
     }
