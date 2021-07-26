@@ -1,6 +1,6 @@
 <?php
 class show_actions {
- protected int $custometId;
+ protected int $customerId;
  protected int $clientId;
 
  const STATUS_NEW = 'new';
@@ -14,12 +14,14 @@ class show_actions {
  const ACTION_RESPONSE = 'response';
  const ACTION_REFUSAL = 'refusal';
 
- public function __construct(int $customerId, int $clientId) {
-    $this->customerId = $customerId;
-    $this->clientId = $clientId;
+ public function __construct(int $customerId, int $clientId)
+ {
+     $this->customerId = $customerId;
+     $this->clientId = $clientId;
  }
 
-  public function getStatus($status = 'all'){
+  public function getStatus($status = 'all')
+  {
     $array[self::STATUS_NEW] = "Новая заявка";
     $array[self::STATUS_PROCESS] = "В процессе";
     $array[self::STATUS_CANCELED] = "Отменена";
@@ -27,7 +29,8 @@ class show_actions {
     $array[self::STATUS_FAILED] = "Провалена";
     return $status === 'all' ? $array : $array[$status];
  }
- public function getAction($action = 'all'){
+ public function getAction($action = 'all')
+ {
     $array[self::ACTION_CANC] = "Отменить заявку";
     $array[self::ACTION_FINISH] = "Завершить заявку";
     $array[self::ACTION_RESPONSE] = "Откликнуться";
@@ -35,7 +38,8 @@ class show_actions {
     return $action === 'all' ? $array : $array[$action];
  }
 
- public function getNextStatus($current_status, $action) {
+ public function getNextStatus($current_status, $action)
+ {
     if($current_status === self::STATUS_NEW) {
         if($action === self::ACTION_CANC) {     return self::STATUS_CANCELED; }
         if($action === self::ACTION_RESPONSE) { return self::STATUS_PROCESS; }
@@ -46,13 +50,14 @@ class show_actions {
     }
  }
 
- public function getActions($current_status, $clicus = 'customer') {
+ public function getActions($current_status, $clicus = 'customer')
+ {
     if($clicus === 'customer') {
     if($current_status === self::STATUS_NEW) {
-        return array(self::STATUS_CANCELED);
+         return self::STATUS_CANCELED;
      }
      if($current_status === self::STATUS_PROCESS) {
-        return array(self::STATUS_COMPLETED);
+         return self::STATUS_COMPLETED;
      }
      if($current_status === self::STATUS_CANCELED) {
         return false;
@@ -66,10 +71,10 @@ class show_actions {
     }
     if($clicus == 'client') {
     if($current_status === self::STATUS_NEW) {
-        return array(self::STATUS_PROCESS);
+         return self::STATUS_PROCESS;
      }
      if($current_status === self::STATUS_PROCESS) {
-        return array(self::STATUS_FAILED);
+         return self::STATUS_FAILED;
      }
      if($current_status === self::STATUS_CANCELED) {
         return false;
