@@ -60,13 +60,13 @@ class show_actions {
          return self::STATUS_COMPLETED;
      }
      if($current_status === self::STATUS_CANCELED) {
-        return false;
+        return null;
      }
      if($current_status === self::STATUS_COMPLETED) {
-        return false;
+        return null;
      }
      if($current_status === self::STATUS_FAILED) {
-        return false;
+        return null;
      }
     }
     if($clicus == 'client') {
@@ -77,13 +77,13 @@ class show_actions {
          return self::STATUS_FAILED;
      }
      if($current_status === self::STATUS_CANCELED) {
-        return false;
+        return null;
      }
      if($current_status === self::STATUS_COMPLETED) {
-        return false;
+        return null;
      }
      if($current_status === self::STATUS_FAILED) {
-        return false;
+        return null;
      }
     }
  }
