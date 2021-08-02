@@ -1,9 +1,9 @@
 <?php
 
 
-class show_actions {
- protected int $customerId;
- protected int $clientId;
+final class show_actions {
+ private int $customerId;
+ private int $clientId;
 
  const STATUS_NEW = 'new';
  const STATUS_PROCESS = 'process';
@@ -63,7 +63,7 @@ class show_actions {
  public function getNextStatus(string $current_status, string $action):?string
  {
     if(!in_array($current_status, self::STAT_TYPES)) {
-        throw new Exception("UNKNOWN CURRENT STATUS '$status'");
+        throw new Exception("UNKNOWN CURRENT STATUS '$current_status'");
     }
     if(!in_array($action, self::STAT_TYPES)) {
         throw new Exception("UNKNOWN ACTION '$action'");
@@ -82,7 +82,7 @@ class show_actions {
  public function getActionsCustomer(string $current_status):?string
  {
     if(!in_array($current_status, self::STAT_TYPES)) {
-        throw new Exception("UNKNOWN CURRENT STATUS '$status'");
+        throw new Exception("UNKNOWN CURRENT STATUS '$current_status'");
     }
     if($current_status === self::STATUS_NEW) {
          return self::STATUS_CANCELED;
@@ -105,7 +105,7 @@ class show_actions {
 public function getActionsClient(string $current_status):?string
 {
     if(!in_array($current_status, self::STAT_TYPES)) {
-        throw new Exception("UNKNOWN CURRENT STATUS '$status'");
+        throw new Exception("UNKNOWN CURRENT STATUS '$current_status'");
     }
     if($current_status === self::STATUS_NEW) {
          return self::STATUS_PROCESS;
