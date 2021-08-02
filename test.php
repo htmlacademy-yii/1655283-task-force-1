@@ -1,6 +1,6 @@
 <?php
 
-require_once "classes/show_actions.php";
+require_once "classes/show/show_actions.php";
 
 $object = new show_actions(10,20);
 
