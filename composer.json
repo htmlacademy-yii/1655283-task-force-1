@@ -3,7 +3,7 @@
     "description": "super",
     "autoload": {
         "psr-4": {
-            "Toproot\\Taskforce\\": "classes/show/"
+            "Classes\\Show\\": "classes/show/"
         }
     },
     "authors": [
