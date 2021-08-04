@@ -1,9 +1,14 @@
 <?php
-namespace Classes\Show;
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 
 require_once "vendor/autoload.php";
 
-$object = new show_actions(10,20);
+use Classes\Show\ShowActions;
+
+$object = new showActions(10,20);
+
 
  try {
         echo "status new:".$object->getStatus('new')."<br>";
