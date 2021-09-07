@@ -1,5 +1,5 @@
 <?php
-namespace Classes\Show;
+namespace Classes;
 
 final class ShowActions {
  private int $customerId;

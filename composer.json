@@ -3,7 +3,7 @@
     "description": "super",
     "autoload": {
         "psr-4": {
-            "Classes\\Show\\": "classes/show/"
+            "Classes\\": "classes/"
         }
     },
     "authors": [

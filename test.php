@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 1);
 
 require_once "vendor/autoload.php";
 
-use Classes\Show\ShowActions;
+use Classes\ShowActions;
 
 $object = new showActions(10,20);
 
