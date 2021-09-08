@@ -1,13 +1,18 @@
 <?php
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 
-require_once "classes/show_actions.php";
+require_once "vendor/autoload.php";
 
-$object = new show_actions(10,20);
+use Classes\ShowActions;
+use Classes\tests\TestAutoload;
 
-// echo "status new:".$object->getStatus('new')."<br>";
-// echo "action response:".$object->getAction('response')."<br>";
-// echo "new-response:".$object->getNextStatus('new','response')."<br>";
-// echo "a-client:".$object->getActionsClient('new')."<br>";
+$object = new showActions(10,20);
+
+$object2 = new testAutoload();
+
+echo "testAutoload:".$object2->test();
 
 
  try {

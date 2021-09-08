@@ -1,9 +1,9 @@
 <?php
+namespace Classes;
 
-
-class show_actions {
- protected int $customerId;
- protected int $clientId;
+final class ShowActions {
+ private int $customerId;
+ private int $clientId;
 
  const STATUS_NEW = 'new';
  const STATUS_PROCESS = 'process';
@@ -16,6 +16,20 @@ class show_actions {
  const ACTION_RESPONSE = 'response';
  const ACTION_REFUSAL = 'refusal';
 
+ const STAT_TYPES = [
+    self::STATUS_NEW,
+    self::STATUS_PROCESS,
+    self::STATUS_CANCELED,
+    self::STATUS_COMPLETED,
+    self::STATUS_FAILED
+ ];
+ const ACT_TYPES = [
+    self::ACTION_CANC,
+    self::ACTION_FINISH,
+    self::ACTION_RESPONSE,
+    self::ACTION_REFUSAL
+ ];
+
  public function __construct(int $customerId, int $clientId)
  {
      $this->customerId = $customerId;
@@ -24,6 +38,9 @@ class show_actions {
 
   public function getStatus(string $status = 'all'):?string
   {
+    if(!in_array($status, self::STAT_TYPES)) {
+        throw new \Exception("UNKNOWN STATUS '$status'");
+    }
     $array[self::STATUS_NEW] = "Новая заявка";
     $array[self::STATUS_PROCESS] = "В процессе";
     $array[self::STATUS_CANCELED] = "Отменена";
@@ -31,8 +48,11 @@ class show_actions {
     $array[self::STATUS_FAILED] = "Провалена";
     return $array[$status];
  }
- public function getAction(string $action = 'all'):string
+ public function getAction(string $action = 'all'):?string
  {
+    if(!in_array($action, self::ACT_TYPES)) {
+        throw new \Exception("UNKNOWN Action '$action'");
+    }
     $array[self::ACTION_CANC] = "Отменить заявку";
     $array[self::ACTION_FINISH] = "Завершить заявку";
     $array[self::ACTION_RESPONSE] = "Откликнуться";
@@ -40,8 +60,14 @@ class show_actions {
     return $array[$action];
  }
 
- public function getNextStatus(string $current_status, string $action):string
+ public function getNextStatus(string $current_status, string $action):?string
  {
+    if(!in_array($current_status, self::STAT_TYPES)) {
+        throw new \Exception("UNKNOWN CURRENT STATUS '$current_status'");
+    }
+    if(!in_array($action, self::STAT_TYPES)) {
+        throw new \Exception("UNKNOWN ACTION '$action'");
+    }
     if($current_status === self::STATUS_NEW) {
         if($action === self::ACTION_CANC) {     return self::STATUS_CANCELED; }
         if($action === self::ACTION_RESPONSE) { return self::STATUS_PROCESS; }
@@ -50,10 +76,14 @@ class show_actions {
         if($action === self::ACTION_FINISH) {   return self::STATUS_COMPLETED; }
         if($action === self::ACTION_REFUSAL) {  return self::STATUS_FAILED; }
     }
+    return null;
  }
 
  public function getActionsCustomer(string $current_status):?string
  {
+    if(!in_array($current_status, self::STAT_TYPES)) {
+        throw new \Exception("UNKNOWN CURRENT STATUS '$current_status'");
+    }
     if($current_status === self::STATUS_NEW) {
          return self::STATUS_CANCELED;
      }
@@ -74,6 +104,9 @@ class show_actions {
 
 public function getActionsClient(string $current_status):?string
 {
+    if(!in_array($current_status, self::STAT_TYPES)) {
+        throw new \Exception("UNKNOWN CURRENT STATUS '$current_status'");
+    }
     if($current_status === self::STATUS_NEW) {
          return self::STATUS_PROCESS;
      }
@@ -89,7 +122,7 @@ public function getActionsClient(string $current_status):?string
      if($current_status === self::STATUS_FAILED) {
         return null;
      }
-
+     return null;
  }
 
 

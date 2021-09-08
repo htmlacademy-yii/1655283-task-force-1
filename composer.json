@@ -1,14 +1,16 @@
 {
-    "name": "a/a",
+    "name": "toproot/taskforce",
+    "description": "super",
     "autoload": {
         "psr-4": {
-            "App\\": "src/App"
+            "Classes\\": "classes/"
         }
     },
     "authors": [
         {
-            "name": "Valerii D",
+            "name": "valer4a",
             "email": "toprootmail@gmail.com"
         }
-    ]
+    ],
+    "require": {}
 }
