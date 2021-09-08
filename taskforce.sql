@@ -74,7 +74,7 @@ CREATE TABLE `tasks`  (
   `author_id` int NOT NULL,
   `performer_id` int NULL,
   `cat_id` int NULL,
-  `status` varchar(255) NULL DEFAULT new,
+  `status` varchar(255) NULL DEFAULT 'new',
   `name` varchar(255) NULL,
   `about` text NULL,
   `location` varchar(255) NULL,
@@ -110,7 +110,7 @@ CREATE TABLE `users`  (
   `set_noticenewresp` int NULL,
   `set_showcontact1` int NULL,
   `set_hideprofile` int NULL,
-  `status` varchar(255) NULL DEFAULT offline,
+  `status` varchar(255) NULL DEFAULT 'offline',
   `rating` varchar(255) NULL,
   `online` varchar(255) NULL,
   PRIMARY KEY (`id`, `user_name`)
