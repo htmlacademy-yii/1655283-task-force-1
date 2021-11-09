@@ -8,18 +8,14 @@ require_once "vendor/autoload.php";
 use Classes\Actions;
 use Classes\tests\TestAutoload;
 
-$object = new Actions(10,20);
-
-$object2 = new testAutoload();
-
-echo "testAutoload:".$object2->test();
+$object = new Actions(10,10,20);
 
 
  try {
-        echo "status new:".$object->getStatus('new')."<br>";
-        echo "action response:".$object->getAction('cancellation')."<br>";
-        echo "new-response:".$object->getNextStatus('456','response2')."<br>";
-        echo "a-client:".$object->getActionsClient('new46')."<br>";
+        //echo "status new:".$object->getStatus('new')."<br>";
+        echo "action response:".$object->getAction('finish')."<br>";
+        //echo "new-response:".$object->getNextStatus('process','new')."<br>";
+        //echo "a-client:".$object->getActionsClient('new')."<br>";
         } catch (\Exception | \Error $error) {
             echo "<PRE>";
             print_r([

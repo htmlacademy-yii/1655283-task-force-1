@@ -1,7 +1,8 @@
 <?php
 namespace Classes;
 
-final class Actions {
+final class Actions extends ActionsControl {
+ private int $userId;
  private int $customerId;
  private int $clientId;
 
@@ -30,11 +31,33 @@ final class Actions {
     self::ACTION_REFUSAL
  ];
 
- public function __construct(int $customerId, int $clientId)
+ public function __construct( int $userId, int $customerId, int $clientId)
  {
+     $this->userId = $userId;
      $this->customerId = $customerId;
      $this->clientId = $clientId;
  }
+
+public function cancellation() {
+    if($this->userId == $this->customerId) {
+        return true;
+    } else { return false; }
+}
+public function finish() {
+    if($this->userId == $this->clientId) {
+        return true;
+    } else { return false; }
+}
+public function response() {
+    if($this->userId != $this->customerId) {
+        return true;
+    } else { return false; }
+}
+public function refusal() {
+    if($this->userId == $this->clientId) {
+        return true;
+    } else { return false; }
+}
 
   public function getStatus(string $status = 'all'):?string
   {
@@ -48,15 +71,17 @@ final class Actions {
     $array[self::STATUS_FAILED] = "Провалена";
     return $array[$status];
  }
- public function getAction(string $action = 'all'):?string
+ public function getAction($action):?string
  {
     if(!in_array($action, self::ACT_TYPES)) {
         throw new \Exception("UNKNOWN Action '$action'");
     }
-    $array[self::ACTION_CANC] = "Отменить заявку";
-    $array[self::ACTION_FINISH] = "Завершить заявку";
-    $array[self::ACTION_RESPONSE] = "Откликнуться";
-    $array[self::ACTION_REFUSAL] = "Отказаться";
+
+    $array[self::ACTION_CANC] =     self::cancellation();
+    $array[self::ACTION_FINISH] =   self::finish();
+    $array[self::ACTION_RESPONSE] = self::response();
+    $array[self::ACTION_REFUSAL] =  self::refusal();
+
     return $array[$action];
  }
 
