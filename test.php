@@ -5,10 +5,10 @@ ini_set('display_startup_errors', 1);
 
 require_once "vendor/autoload.php";
 
-use Classes\ShowActions;
+use Classes\Actions;
 use Classes\tests\TestAutoload;
 
-$object = new showActions(10,20);
+$object = new Actions(10,20);
 
 $object2 = new testAutoload();
 
