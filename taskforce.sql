@@ -63,9 +63,7 @@ CREATE TABLE `responces`  (
 
 CREATE TABLE `settings`  (
   `nameset` varchar(255) NOT NULL,
-  `value` varchar(255) NULL,
-  `value2` varchar(255) NULL,
-  `value3` varchar(255) NULL,
+  `value` text(10000) NULL,
   PRIMARY KEY (`nameset`)
 );
 
@@ -90,7 +88,7 @@ CREATE TABLE `tasks`  (
 CREATE TABLE `users`  (
   `id` int NOT NULL,
   `user_name` varchar(255) NOT NULL,
-  `password` varchar(255) NULL,
+  `password` varchar(255) NOT NULL,
   `F` varchar(255) NULL,
   `I` varchar(255) NULL,
   `O` varchar(255) NULL,
