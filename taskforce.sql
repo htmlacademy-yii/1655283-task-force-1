@@ -1,20 +1,20 @@
 CREATE TABLE `events`  (
   `id` int NOT NULL,
-  `user_id` int NULL,
-  `name` varchar(255) NULL,
-  `inc_type` varchar(255) NULL,
-  `inc_id` int NULL,
-  `time` timestamp NULL,
+  `user_id` int NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `inc_type` varchar(255) NOT NULL,
+  `inc_id` int NOT NULL,
+  `time` timestamp NOT NULL,
   PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `files`  (
   `id` int NOT NULL,
-  `file_name` varchar(255) NULL,
-  `src` varchar(255) NULL,
-  `type` varchar(255) NULL,
-  `mime` varchar(255) NULL,
-  `filesize` double NULL,
+  `file_name` varchar(255) NOT NULL,
+  `src` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `mime` varchar(255) NOT NULL,
+  `filesize` double NOT NULL,
   `wh` varchar(255) NULL,
   `esc1_src` varchar(255) NULL,
   `esc2_src` varchar(255) NULL,
@@ -24,18 +24,18 @@ CREATE TABLE `files`  (
 
 CREATE TABLE `locations`  (
   `id` int NOT NULL,
-  `country` varchar(255) NULL,
-  `city` varchar(255) NULL,
-  `name` varchar(255) NULL,
+  `country` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `loggs`  (
   `id` int NOT NULL,
-  `session_id` char(255) NULL,
-  `method` varchar(255) NULL,
-  `uri` varchar(255) NULL,
-  `ip` varchar(255) NULL,
+  `session_id` char(255) NOT NULL,
+  `method` varchar(255) NOT NULL,
+  `uri` varchar(255) NOT NULL,
+  `ip` varchar(255) NOT NULL,
   `time` timestamp NULL ON UPDATE CURRENT_TIMESTAMP,
   `action` varchar(255) NULL,
   PRIMARY KEY (`id`)
@@ -43,9 +43,9 @@ CREATE TABLE `loggs`  (
 
 CREATE TABLE `messages`  (
   `id` int NOT NULL,
-  `from` int NULL,
-  `to` int NULL,
-  `time` timestamp NULL,
+  `from` int NOT NULL,
+  `to` int NOT NULL,
+  `time` timestamp NOT NULL,
   `time_edit` timestamp NULL,
   `text` text NULL,
   PRIMARY KEY (`id`)
@@ -53,11 +53,11 @@ CREATE TABLE `messages`  (
 
 CREATE TABLE `responces`  (
   `id` int NOT NULL,
-  `task_id` int NULL,
-  `customer_id` int NULL,
-  `performer_id` int NULL,
-  `text` text NULL,
-  `time` timestamp NULL,
+  `task_id` int NOT NULL,
+  `customer_id` int NOT NULL,
+  `performer_id` int NOT NULL,
+  `text` text NOT NULL,
+  `time` timestamp NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -73,15 +73,15 @@ CREATE TABLE `tasks`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `author_id` int NOT NULL,
   `performer_id` int NULL,
-  `cat_id` int NULL,
-  `status` varchar(255) NULL DEFAULT 'new',
-  `name` varchar(255) NULL,
-  `about` text NULL,
-  `location` varchar(255) NULL,
-  `money` char(11) NULL,
+  `cat_id` int NOT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'new',
+  `name` varchar(255) NOT NULL,
+  `about` text NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `money` char(11) NOT NULL,
   `timeout` timestamp NULL,
   `inc_files` varchar(255) NULL,
-  `time_add` timestamp NULL,
+  `time_add` timestamp NOT NULL,
   `time_close` timestamp NULL,
   `time_start` timestamp NULL,
   PRIMARY KEY (`id`)
@@ -90,13 +90,13 @@ CREATE TABLE `tasks`  (
 CREATE TABLE `users`  (
   `id` int NOT NULL,
   `user_name` varchar(255) NOT NULL,
-  `password` varchar(255) NULL,
+  `password` varchar(255) NOT NULL,
   `F` varchar(255) NULL,
-  `I` varchar(255) NULL,
+  `I` varchar(255) NOT NULL,
   `O` varchar(255) NULL,
-  `email` varchar(255) NULL,
+  `email` varchar(255) NOT NULL,
   `location` varchar(255) NULL,
-  `birhsday` date NULL,
+  `birhsday` date NOT NULL,
   `about` text NULL,
   `cat_ids` varchar(255) NULL,
   `tel` varchar(255) NULL,
