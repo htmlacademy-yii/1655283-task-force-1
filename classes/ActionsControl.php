@@ -1,6 +1,7 @@
 <?php
 namespace Classes;
 
+
 abstract class ActionsControl {
     abstract protected function cancellation();
     abstract protected function finish();

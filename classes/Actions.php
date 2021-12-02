@@ -1,6 +1,7 @@
 <?php
 namespace Classes;
 
+
 final class Actions extends ActionsControl {
  private int $userId;
  private int $customerId;
