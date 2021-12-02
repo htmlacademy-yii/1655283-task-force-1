@@ -6,9 +6,14 @@ ini_set('display_startup_errors', 1);
 require_once "vendor/autoload.php";
 
 use Classes\Actions;
+
 use Classes\tests\TestAutoload;
 
 $object = new Actions(10,10,20);
+
+$object2 = new testAutoload();
+
+echo "testAutoload:".$object2->test();
 
 
  try {
