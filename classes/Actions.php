@@ -1,7 +1,7 @@
 <?php
 namespace Classes;
 
-final class ShowActions {
+final class Actions {
  private int $customerId;
  private int $clientId;
 
