@@ -5,23 +5,23 @@ ini_set('display_startup_errors', 1);
 
 require_once "vendor/autoload.php";
 
+use Classes\Exc\MyExc;
 use Classes\Actions;
-
-use Classes\tests\TestAutoload;
 
 $object = new Actions(10,10,20);
 
-$object2 = new testAutoload();
-
-echo "testAutoload:".$object2->test();
-
-
+ $o = new MyExc("123");
  try {
+
         //echo "status new:".$object->getStatus('new')."<br>";
-        echo "action response:".$object->getAction('finish')."<br>";
+        echo "action response:".$object->getAction('finish2')."<br>";
         //echo "new-response:".$object->getNextStatus('process','new')."<br>";
         //echo "a-client:".$object->getActionsClient('new')."<br>";
-        } catch (\Exception | \Error $error) {
+        }
+        catch(MyExc $e) {
+            echo "MyExc:".$e->getMessage();
+        }
+         catch (\Exception | \Error $error) {
             echo "<PRE>";
             print_r([
                 'error_message' => $error->getMessage(),
