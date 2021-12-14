@@ -8,14 +8,44 @@ $filename = 'data/cities.csv';
 
 $columns = array('city','lat','long');
 
+$columnsDB = array('city','lat','long');
+
+$tab = 'cities';
+
+foreach($columnsDB As $k=>$v)
+{
+    $cols .= ",`$v`";
+}
+
+
 try {
 
 $object = new CIS($filename, $columns);
 
-$array = $object->import();
-echo "<PRE>";
-print_r($array);
-echo "</PRE>";
+$object->import();
+
+$data = $object->getData();
+
+foreach($data As $id=>$terms)
+{
+
+$id++;
+
+$sql .= "INSERT INTO `$tab` (`id`$cols) VALUES('$id'";
+
+    foreach($terms As $iid=>$value)
+    {
+        if($columnsDB[$iid] == 'password') { $value = md5($value); }
+
+        $sql .= ",'$value'";
+    }
+
+$sql .= ");<br>";
+
+}
+
+echo $sql;
+
 
 } catch(\Exception | \Error $error) {
 
@@ -26,6 +56,8 @@ echo "</PRE>";
                 'error' => $error->getLine()
             ]);
             echo "</PRE>";
+
+} finally {
 
 }
 

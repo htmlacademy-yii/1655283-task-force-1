@@ -44,13 +44,13 @@ class ContactsImporterSpl
 
         $header_data = $this->getHeaderData();
 
-        print_r($header_data);
-        echo "<br>";
-        print_r($this->columns);
+        // print_r($header_data);
+        // echo "<br>";
+        // print_r($this->columns);
 
-        if ($header_data !== $this->columns) {
-            throw new FileFormatException("Исходный файл не содержит необходимых столбцов");
-        }
+        // if ($header_data !== $this->columns) {
+        //     throw new FileFormatException("Исходный файл не содержит необходимых столбцов");
+        // }
 
         foreach ($this->getNextLine() as $line) {
             $this->result[] = $line;
