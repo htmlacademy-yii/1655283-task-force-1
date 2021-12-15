@@ -1,5 +1,11 @@
 <?php
+// declare(strict_types=1);
+
 namespace Classes;
+
+use Classes\Exceptions\MyException;
+
+//use Classes\testfolder\MyException as Test1;
 
 final class Actions extends ActionsControl {
  private int $userId;
@@ -39,14 +45,10 @@ final class Actions extends ActionsControl {
  }
 
 public function cancellation() {
-    if($this->userId == $this->customerId) {
-        return true;
-    } else { return false; }
+    return $this->userId === $this->customerId;
 }
 public function finish() {
-    if($this->userId == $this->clientId) {
-        return true;
-    } else { return false; }
+    return $this->userId === $this->clientId;
 }
 public function response() {
     if($this->userId != $this->customerId) {
@@ -54,15 +56,13 @@ public function response() {
     } else { return false; }
 }
 public function refusal() {
-    if($this->userId == $this->clientId) {
-        return true;
-    } else { return false; }
+    return $this->userId === $this->clientId;
 }
 
   public function getStatus(string $status = 'all'):?string
   {
     if(!in_array($status, self::STAT_TYPES)) {
-        throw new \Exception("UNKNOWN STATUS '$status'");
+        throw new MyException("UNKNOWN STATUS '$status'");
     }
     $array[self::STATUS_NEW] = "Новая заявка";
     $array[self::STATUS_PROCESS] = "В процессе";
@@ -74,7 +74,7 @@ public function refusal() {
  public function getAction($action):?string
  {
     if(!in_array($action, self::ACT_TYPES)) {
-        throw new \Exception("UNKNOWN Action '$action'");
+        throw new MyException("UNKNOWN Action '$action'");
     }
 
     $array[self::ACTION_CANC] =     self::cancellation();
@@ -88,10 +88,10 @@ public function refusal() {
  public function getNextStatus(string $current_status, string $action):?string
  {
     if(!in_array($current_status, self::STAT_TYPES)) {
-        throw new \Exception("UNKNOWN CURRENT STATUS '$current_status'");
+        throw new MyException("UNKNOWN CURRENT STATUS '$current_status'");
     }
     if(!in_array($action, self::STAT_TYPES)) {
-        throw new \Exception("UNKNOWN ACTION '$action'");
+        throw new MyException("UNKNOWN ACTION '$action'");
     }
     if($current_status === self::STATUS_NEW) {
         if($action === self::ACTION_CANC) {     return self::STATUS_CANCELED; }
@@ -107,7 +107,7 @@ public function refusal() {
  public function getActionsCustomer(string $current_status):?string
  {
     if(!in_array($current_status, self::STAT_TYPES)) {
-        throw new \Exception("UNKNOWN CURRENT STATUS '$current_status'");
+        throw new MyException("UNKNOWN CURRENT STATUS '$current_status'");
     }
     if($current_status === self::STATUS_NEW) {
          return self::STATUS_CANCELED;
@@ -130,7 +130,7 @@ public function refusal() {
 public function getActionsClient(string $current_status):?string
 {
     if(!in_array($current_status, self::STAT_TYPES)) {
-        throw new \Exception("UNKNOWN CURRENT STATUS '$current_status'");
+        throw new MyException("UNKNOWN CURRENT STATUS '$current_status'");
     }
     if($current_status === self::STATUS_NEW) {
          return self::STATUS_PROCESS;
