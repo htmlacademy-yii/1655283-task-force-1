@@ -25,7 +25,7 @@ class ContactsImporterSpl
         $this->columns = $columns;
     }
 
-    public function import():void
+    public function import()
     {
         if (!$this->validateColumns($this->columns)) {
             throw new FileFormatException("Заданы неверные заголовки столбцов");
@@ -55,6 +55,7 @@ class ContactsImporterSpl
         foreach ($this->getNextLine() as $line) {
             $this->result[] = $line;
         }
+        return $this;
     }
 
     public function getData():array {
@@ -81,18 +82,10 @@ class ContactsImporterSpl
     private function validateColumns(array $columns):bool
     {
         $result = true;
-
-        if (count($columns)) {
+        if (!$columns) { throw new FileFormatException('empty columns'); }
             foreach ($columns as $column) {
-                if (!is_string($column)) {
-                    $result = false;
-                }
+                if(!is_string($column)) { throw new FileFormatException('error columns'); }
             }
-        }
-        else {
-            $result = false;
-        }
-
         return $result;
     }
 }

@@ -22,11 +22,7 @@ try {
 
 $object = new CIS($filename, $columns);
 
-$object->import();
-
-$data = $object->getData();
-
-foreach($data As $id=>$terms)
+foreach($object->import()->getData() As $id=>$terms)
 {
 
 $id++;
