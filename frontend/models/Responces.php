@@ -31,7 +31,7 @@ class Responces extends \yii\db\ActiveRecord
     {
         return [
             [['id'], 'required'],
-            [['id', 'task_id', 'customer_id', 'performer_id'], 'integer'],
+            [['id', 'task_id','author_id', 'customer_id', 'performer_id'], 'integer'],
             [['text'], 'string'],
             [['time'], 'safe'],
             [['id'], 'unique'],
@@ -46,6 +46,7 @@ class Responces extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'task_id' => 'Task ID',
+            'author_id' => 'Author ID',
             'customer_id' => 'Customer ID',
             'performer_id' => 'Performer ID',
             'text' => 'Text',

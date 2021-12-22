@@ -93,4 +93,13 @@ class Users extends \yii\db\ActiveRecord
             'online' => 'Online',
         ];
     }
+    public function getCategories() {
+        return $this->hasMany(Categories::class, ['id' => 'cat_id']);
+    }
+    public function getTasks() {
+        return $this->hasMany(Tasks::class, ['performer_id' => 'id']);
+    }
+    public function getResponces() {
+        return $this->hasMany(Responces::class, ['performer_id' => 'id']);
+    }
 }

@@ -78,4 +78,7 @@ class Tasks extends \yii\db\ActiveRecord
             'long' => 'Long',
         ];
     }
+    public function getCategories() {
+        return $this->hasOne(Categories::class, ['id' => 'cat_id']);
+    }
 }

@@ -43,4 +43,7 @@ class Categories extends \yii\db\ActiveRecord
             'icon' => 'Icon',
         ];
     }
+    public function getTasks() {
+        return $this->hasMany(Tasks::class, ['id' => 'id']);
+    }
 }

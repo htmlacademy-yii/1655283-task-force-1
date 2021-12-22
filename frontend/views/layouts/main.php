@@ -81,16 +81,16 @@ AppAsset::register($this);
                 <div class="header__nav">
                     <ul class="header-nav__list site-list">
                         <li class="site-list__item">
-                            <a href="browse.html">Задания</a>
+                            <a href="tasks">Задания</a>
                         </li>
                         <li class="site-list__item">
-                            <a href="users.html">Исполнители</a>
+                            <a href="users">Исполнители</a>
                         </li>
                         <li class="site-list__item">
-                            <a href="create.html">Создать задание</a>
+                            <a href="create">Создать задание</a>
                         </li>
                         <li class="site-list__item">
-                            <a href="account.html">Мой профиль</a>
+                            <a href="profile">Мой профиль</a>
                         </li>
                     </ul>
                 </div>
