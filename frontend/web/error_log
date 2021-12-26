@@ -1,0 +1,14 @@
+[15-Dec-2021 10:23:46 Europe/Helsinki] PHP Fatal error:  Cannot declare class frontend\controllers\ContactsController, because the name is already in use in /home/jjbmctjz/yii-taskforce/frontend/views/contacts/index.php on line 11
+[15-Dec-2021 11:10:23 Europe/Helsinki] PHP Warning:  require_once(vendor/autoload.php): failed to open stream: No such file or directory in /home/jjbmctjz/yii-taskforce/frontend/web/test.php on line 6
+[15-Dec-2021 11:10:23 Europe/Helsinki] PHP Fatal error:  require_once(): Failed opening required 'vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/jjbmctjz/yii-taskforce/frontend/web/test.php on line 6
+[15-Dec-2021 11:13:42 Europe/Helsinki] PHP Warning:  require_once(vendor/autoload.php): failed to open stream: No such file or directory in /home/jjbmctjz/yii-taskforce/frontend/web/test.php on line 6
+[15-Dec-2021 11:13:42 Europe/Helsinki] PHP Fatal error:  require_once(): Failed opening required 'vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/jjbmctjz/yii-taskforce/frontend/web/test.php on line 6
+[15-Dec-2021 11:32:29 Europe/Helsinki] PHP Warning:  require_once(vendor/autoload.php): failed to open stream: No such file or directory in /home/jjbmctjz/yii-taskforce/frontend/web/test.php on line 6
+[15-Dec-2021 11:32:29 Europe/Helsinki] PHP Fatal error:  require_once(): Failed opening required 'vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/jjbmctjz/yii-taskforce/frontend/web/test.php on line 6
+[15-Dec-2021 11:32:31 Europe/Helsinki] PHP Warning:  require_once(vendor/autoload.php): failed to open stream: No such file or directory in /home/jjbmctjz/yii-taskforce/frontend/web/test.php on line 6
+[15-Dec-2021 11:32:31 Europe/Helsinki] PHP Fatal error:  require_once(): Failed opening required 'vendor/autoload.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/jjbmctjz/yii-taskforce/frontend/web/test.php on line 6
+[15-Dec-2021 11:33:37 Europe/Helsinki] PHP Fatal error:  Uncaught Error: Class 'Classes\Actions' not found in /home/jjbmctjz/yii-taskforce/frontend/web/test.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/jjbmctjz/yii-taskforce/frontend/web/test.php on line 11
+[15-Dec-2021 14:34:06 Europe/Helsinki] PHP Fatal error:  Cannot make static method yii\db\ActiveRecord::tableName() non static in class frontend\models\Contact in /home/jjbmctjz/yii-taskforce/frontend/models/Contact.php on line 7
